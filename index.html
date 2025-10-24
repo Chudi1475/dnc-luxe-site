@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNC LUXE RENTALS - Premium Vehicle Rentals</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/stats.js"></script>
+    <script src="components/vehicle-card.js"></script>
+    <script src="components/testimonial-card.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --accent: #d4a017;
+            --dark: #1a202c;
+            --light: #f7fafc;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center bg-gray-900">
+        <div class="absolute inset-0 overflow-hidden">
+            <img src="https://cdn.dealeraccelerate.com/bagauction/15/2975/130396/1920x1440/2021-mercedes-maybach-gls-600-4matic" 
+                 alt="Luxury Car" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-gray-900 to-transparent opacity-90"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10 text-center text-white">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Executive Car Rental Services</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-light">Experience uncompromising luxury with our curated fleet of premium vehicles, tailored for the discerning client.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#fleet" class="bg-primary text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-primary-light transition">
+                    Explore Fleet
+                </a>
+                <a href="#contact" class="bg-white text-primary px-8 py-3 rounded-md text-lg font-medium hover:bg-gray-100 transition">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+            <a href="#fleet" class="text-white animate-bounce">
+                <i data-feather="chevron-down" class="w-8 h-8"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <custom-stats></custom-stats>
+
+    <!-- Fleet Section -->
+    <section id="fleet" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Premium Fleet</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Choose from our exclusive collection of luxury and performance vehicles for any occasion.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+
+<vehicle-card 
+                    image="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWZ5bjZ5OXF6aDUzbGY2cmp5dzNlbGsybmNuaGp1cnNnc2d5aWViZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9GLvNIj0pWZMQFYYro/giphy.gif"
+                    title="Tesla Model 3 Performance"
+                    type="Sports"
+                    passengers="2"
+                    price="$199/day"
+                ></vehicle-card>
+
+
+                <vehicle-card 
+                    image="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bHV5eHRsc3ZhdW01cGdsaHN2NWVsaGQ0aGM2aGt2MW1lYng4cmE0diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/6wEGFUq71kngO7jcjl/giphy.gif"
+                    title="Mercedes-Benz S 580 Maybach"
+                    type="Luxury"
+                    passengers="4"
+                    price="$499/day"
+                    badge="MOST POPULAR"
+                    badge-color="accent"
+                ></vehicle-card>
+                
+                                
+                <vehicle-card 
+                    image="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmdrYTg3a214d2p2NjQ4OG4xcGEzYzE3OGdpN3VtcGd6aDQ4OXhycyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RwQqALEWWWJeUqd21s/giphy.gif"
+                    title="Range Rover Autobiography"
+                    type="SUV"
+                    passengers="5"
+                    price="$399/day"
+                    badge="NEW"
+                    badge-color="primary"
+                ></vehicle-card>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-primary text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-primary-light transition">
+                    View All Vehicles
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We go beyond just renting cars. Experience our premium services tailored to your needs.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="car" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Luxury Fleet</h3>
+                    <p class="text-gray-600">Our hand-picked collection of premium vehicles ensures you travel in style and comfort.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="map-pin" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Flexible Delivery</h3>
+                    <p class="text-gray-600">We deliver your vehicle to your preferred location - airport, hotel, or home.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="headphones" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">24/7 Support</h3>
+                    <p class="text-gray-600">Our dedicated team is available round the clock to assist you with any needs.</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-primary rounded-lg p-8 md:p-12 text-white">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-4">Corporate & Event Rentals</h3>
+                        <p class="mb-6">Special rates and services for corporate clients and special events. Impress your clients or guests with our premium fleet.</p>
+                        <a href="#contact" class="inline-block bg-white text-primary px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition">
+                            Learn More
+                        </a>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Corporate Event" class="rounded-lg max-h-64 object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what our valued clients have to say about their experiences.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <testimonial-card 
+                    rating="5"
+                    text="The Mercedes S-Class I rented was impeccable. The DNC Luxe team made the entire process seamless from booking to return. Will definitely use them again!"
+                    image="https://randomuser.me/api/portraits/men/32.jpg"
+                    name="Michael Johnson"
+                    position="Business Executive"
+                ></testimonial-card>
+                
+                <testimonial-card 
+                    rating="5"
+                    text="For our wedding, we wanted something special. The white Range Rover from DNC Luxe was perfect and their service was outstanding. Highly recommend!"
+                    image="https://randomuser.me/api/portraits/women/44.jpg"
+                    name="Sarah Williams"
+                    position="Bride"
+                ></testimonial-card>
+                
+                <testimonial-card 
+                    rating="4.5"
+                    text="As a car enthusiast, I appreciate quality. The Porsche 911 I rented was in perfect condition and delivered right to my hotel. Exceptional service."
+                    image="https://randomuser.me/api/portraits/men/75.jpg"
+                    name="David Chen"
+                    position="Car Enthusiast"
+                ></testimonial-card>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-12 md:mb-0 md:pr-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Contact Us</h2>
+                    <p class="text-gray-600 mb-8">Ready to book your premium rental or have questions? Our team is here to help you with all your needs.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i data-feather="map-pin" class="text-primary w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Location</h4>
+                                <p class="text-gray-600">2001 Ross Ave #2800, Dallas, TX 75201</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i data-feather="phone" class="text-primary w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Phone</h4>
+                                <p class="text-gray-600">+1 (972) 218-8829</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/10 p-3 rounded-full mr-4">
+                                <i data-feather="mail" class="text-primary w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Email</h4>
+                                <p class="text-gray-600">Dncluxeauto@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                            </div>
+                            <button type="submit" class="bg-primary text-white px-6 py-3 rounded-md font-medium hover:bg-primary-light transition w-full">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <custom-footer></custom-footer>
+    
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
