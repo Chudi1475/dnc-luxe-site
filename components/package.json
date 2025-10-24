@@ -1,6 +1,6 @@
 {
   "name": "dnc-luxe-site",
-  "private": true,
+  "version": "1.0.0",
   "type": "module",
   "dependencies": {
     "@supabase/supabase-js": "^2.45.0"

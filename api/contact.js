@@ -54,7 +54,7 @@ export default async function handler(req, res) {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            from: 'DNC Luxe <noreply@dncluxe.com>',
+            from: 'DNC Luxe <onboarding@resend.dev>',
             to: [process.env.OWNER_EMAIL],
             subject: 'New DNC Luxe Lead',
             html
