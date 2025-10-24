@@ -1,0 +1,23 @@
+{
+  "name": "dnc-luxe-site",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chudi1475/dnc-luxe-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chudi1475/dnc-luxe-site/issues"
+  },
+  "homepage": "https://github.com/Chudi1475/dnc-luxe-site#readme",
+  "description": "",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.76.1"
+  }
+}
