@@ -1,59 +1,80 @@
 // Main application script
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile menu toggle functionality
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+  // Mobile menu toggle
+  const mobileMenuButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
     });
-    
-    // Animate elements when they come into view
-    const animateOnScroll = () => {
-        const elements = document.querySelectorAll('.animate-on-scroll');
-        
-        elements.forEach(element => {
-            const elementTop = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (elementTop < windowHeight - 100) {
-                element.classList.add('animate-fade-in');
-            }
+  }
+
+  // Smooth scrolling
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Animate on scroll
+  const animateOnScroll = () => {
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      const top = el.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) el.classList.add('animate-fade-in');
+    });
+  };
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll();
+
+  // ---- Contact form submit (single source of truth) ----
+  const form = document.querySelector('#contact form, #contact-form'); // support either structure
+  const button = form?.querySelector('button[type="submit"]');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const payload = {
+        name: form.querySelector('#name')?.value?.trim() || '',
+        email: form.querySelector('#email')?.value?.trim() || '',
+        message: form.querySelector('#message')?.value?.trim() || '',
+        honeypot: form.querySelector('#company')?.value?.trim() || '' // should stay empty
+      };
+
+      // quick client validation
+      if (!payload.name || !payload.email) {
+        alert('Please enter your name and email.');
+        return;
+      }
+
+      if (button) { button.disabled = true; button.textContent = 'Sending...'; }
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         });
-    };
-    
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Initial check
-    
-    // Initialize any other components or plugins
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(body?.detail || body?.error || 'Request failed');
+
+        form.reset();
+        if (button) {
+          button.textContent = 'Sent!';
+          setTimeout(() => { button.textContent = 'Send Message'; button.disabled = false; }, 1200);
+        }
+        alert('Thanks! We’ll be in touch shortly.');
+      } catch (err) {
+        if (button) { button.disabled = false; button.textContent = 'Send Message'; }
+        alert('Could not send. ' + (err?.message || 'Please try again.'));
+      }
+    });
+  }
 });
 
-// Form submission handling
-const contactForm = document.querySelector('#contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Here you would typically send the form data to a server
-        alert('Thank you for your message! We will get back to you soon.');
-        contactForm.reset();
-    });
-}
